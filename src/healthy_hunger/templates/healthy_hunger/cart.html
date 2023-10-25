@@ -4,7 +4,7 @@
 {% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
 {% block link2 %} <link rel="stylesheet" href={% static "healthy_hunger/css/custom.css" %}> {% endblock link2 %}
 {% block script %}<script src="{% static 'healthy_hunger/js/custom.js' %}"></script>{% endblock script %}
-{% block title %} Search {% endblock %}
+{% block title %} Cart {% endblock %}
 {% block content %}
 
 <div style="padding: 5%;" class="table-responsive">
@@ -14,6 +14,7 @@
             <th>Name</th>
             <th>Price(INR)</th>
             <th>Order Quantity</th>
+            <th>Delete</th>
         </tr>
         {% for prod in products %}
         <tr>
@@ -27,6 +28,9 @@
                     <button class="btn btn-sm btn-primary" onclick="incr_or_decr(this, 1, {{ prod.product.id }}, {{ prod.product.price }})">+</button>
                 </div>
             </td>
+            <td>
+                <a href="/delete/{{ prod.product.id }}/"><button class="btn btn-danger">Delete</button></a>
+            </td>
         </tr>
         {% endfor %}
     </table>
@@ -34,9 +38,10 @@
     <form method="POST" class="form-group">
         {% csrf_token %}
         <p>Total Value</p>
-        <input id="total_value" class="form-control" name="total_value" value={{ total_price }}>
+        <input id="total_value_hidden" name="total_value" class="form-control" value={{ total_price }} hidden>
+        <input id="total_value" class="form-control" value={{ total_price }} disabled>
         <br>
-        <input type="submit" value="Order now" class="btn btn-danger btn-md" >
+        <input type="submit" value="Order now" class="btn btn-danger btn-md">
     </form>
     </div>
 </div>

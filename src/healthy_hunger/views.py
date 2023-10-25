@@ -147,7 +147,7 @@ class CartView(View):
     
     def post(self, request):
         total_value = int(float(request.POST["total_value"])) * 100
-
+        print(total_value)
         session = stripe.checkout.Session.create(
             line_items=[
                 {
@@ -162,9 +162,25 @@ class CartView(View):
                 },
             ],
             mode='payment',
-            success_url='http://localhost:7000/',
+            success_url='http://localhost:7000/success/',
             cancel_url='http://localhost:7000/',
         
         )
 
         return HttpResponseRedirect(f"{session.url}")
+
+class CartDeleteProduct(View):
+    def get(self, request, pk):
+        if not request.user.is_authenticated:
+            return HttpResponseRedirect('/')
+        
+        cart_list = Cart.objects.filter(product_id=pk, user=request.user)
+        if cart_list:
+            cart_list.delete()
+        
+        return HttpResponseRedirect("/cart/")
+
+class SuccessOrder(View):
+    def get(self, request):
+        Cart.objects.filter(user=request.user).delete()
+        return HttpResponseRedirect('/')

@@ -31,10 +31,12 @@
                 {{ product.ingredients|linebreaks }}
             </p> 
             <br><br>
+            {% if user.is_authenticated %}
             <form method="post">
                 {% csrf_token %}
-                <a href=""><button class="nutrieng_order">Click Here To Order Now</button></a>
+                <a href=""><button class="nutrieng_order">Click Here To Add to Cart</button></a>
             </form>
+            {% endif %}
         </div>
     </div>
 </div>

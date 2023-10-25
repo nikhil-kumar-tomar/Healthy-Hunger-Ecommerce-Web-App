@@ -13,7 +13,9 @@ urlpatterns = [
     path('register/', views.Register.as_view(), name='register'),
     path('login/', views.Login.as_view(), name='login'),
     path('logout/', views.Logout.as_view(), name='logout'),
-    path('cart/', views.CartView.as_view(), name='cartview')
+    path('cart/', views.CartView.as_view(), name='cartview'),
+    path('delete/<int:pk>/', views.CartDeleteProduct.as_view(), name='cart_delete_product'),
+    path('success/', views.SuccessOrder.as_view(), name='order_success')
 ]
 
 if settings.DEBUG:
