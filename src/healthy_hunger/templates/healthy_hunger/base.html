@@ -1,0 +1,91 @@
+<html>
+<head>
+    {% block meta %}<meta name="viewport" content="width=device-width, initial-scale=1.0">{% endblock meta %}
+    <title>{% block title %}My Website{% endblock %}</title>
+    {% load static %}
+    {% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
+    {% block link2 %} <link rel="stylesheet" href={% static "healthy_hunger/css/custom.css" %}> {% endblock link2 %}
+    {% block script %}{% endblock script %}
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="{% static 'healthy_hunger/img/logo.png' %}" alt="Your Logo" style="width: 50%; margin-left:-70%">
+            </a>
+
+            <ul class="navbar-nav" id="navbar_butns">
+                <li class="nav-item">
+                    <a class="nav-link" id="nav_btn" href="/" style="">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="nav_btn" href="/about/">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="nav_btn" href="/contact/">Contact Us</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                <a href="/logout/" id="nav_btn" class="btn btn-link">Logout</a>
+                <a href="/cart/" class="btn btn-link" id="nav_btn">Cart</a>
+                </li>
+                {% else %}
+                <li>
+                <a href="/login/" id="nav_btn" class="btn btn-link">Login</a>
+                </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+
+    
+    {% comment %} <header class="bg-white" style="height: 2%; padding-bottom: 3%;">
+        <div class="navbar">
+            <div class="row">
+                <div style="max-width:30%;margin:0% 5%;">
+                    <a href="/"><img src="{% static 'healthy_hunger/img/logo.png' %}" alt="Your Logo" class="img-fluid" style="width: 100%;"></a>
+                </div>
+                <div style="max-width:40%;">
+                    <a href="/" id="header_btn" class="btn btn-link">Home</a>
+                    <a href="/about/" id="header_btn" class="btn btn-link">About Us</a>
+                    <a href="/contact/" id="header_btn" class="btn btn-link">Contact Us</a>
+                    {% if user.is_authenticated %}
+                        <a href="/logout/" id="header_btn" class="btn btn-link">Logout</a>
+                    {% else %}
+                        <a href="/login/" id="header_btn" class="btn btn-link">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header> {% endcomment %}
+    
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    <br><br>
+    <footer style="display: flex; justify-content: space-between;">
+        <div class="footer_row pt-3 pl-4">
+            <div class="footer_column">
+                <p style="font-weight:bold; font-size:20px">Company</p>
+                <a href="/about/">About Us</a>
+            </div>
+            <div class="footer_column">
+                <p style="font-weight:bold; font-size:20px">Contact</p>
+                <a href="/contact/">Contact Us</a>
+            </div>
+            <div class="footer_column">
+                <p style="font-weight:bold; font-size:20px">Legal</p>
+                <a href="/terms/">Terms & Conditions</a>
+            </div>
+        </div>
+        <div class="footer_text mt-2">
+            <h1>WORK</h1>
+            <h1>EAT</h1>
+            <h1>SLEEP</h1>
+            <h1>REPEAT</h1>
+        </div>
+    </footer>
+</body>
+</html>

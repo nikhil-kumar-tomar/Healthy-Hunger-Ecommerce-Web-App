@@ -1,0 +1,41 @@
+{% extends "healthy_hunger/base.html" %}
+{% load static %}
+{% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
+{% block link2 %} <link rel="stylesheet" href={% static "healthy_hunger/css/custom.css" %}> {% endblock link2 %}
+{% block title %} {{ product.name }} {% endblock %}
+{% block content %}
+
+<div class="custom-container">
+    <div class="row">
+        <div class="custom_image">
+            <img src="{{ product.product_image.url }}" alt="Product Image">
+        </div>
+        <div class="custom_text">
+            <h1>{{ product.name }}</h1>
+            <p>
+                {{ product.description|linebreaks }}
+            </p> 
+        </div>
+    </div>
+</div>
+
+<div class="nutrieng-container">
+    <div class="row">
+        <div class="nutrieng_image">
+            <h1>Nutrition</h1>
+            <img src="{{ product.nutrition_image.url }}" alt="Nutrition">
+        </div>
+        <div class="nutrieng_text">
+            <h1>Ingredients</h1>
+            <p>
+                {{ product.ingredients|linebreaks }}
+            </p> 
+            <br><br>
+            <form method="post">
+                {% csrf_token %}
+                <a href=""><button class="nutrieng_order">Click Here To Order Now</button></a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
