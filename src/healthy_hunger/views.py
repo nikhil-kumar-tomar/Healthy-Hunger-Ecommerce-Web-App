@@ -147,7 +147,6 @@ class CartView(View):
     
     def post(self, request):
         total_value = int(float(request.POST["total_value"])) * 100
-        print(total_value)
         session = stripe.checkout.Session.create(
             line_items=[
                 {
