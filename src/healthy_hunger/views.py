@@ -163,6 +163,7 @@ class CartView(View):
             mode='payment',
             success_url='http://localhost:7000/success/',
             cancel_url='http://localhost:7000/',
+            billing_address_collection="required"
         
         )
 
