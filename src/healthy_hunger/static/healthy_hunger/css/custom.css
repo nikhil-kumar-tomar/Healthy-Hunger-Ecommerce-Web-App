@@ -327,3 +327,15 @@ background-color: aliceblue;
     font-size: 20;
     font-weight: bold;
   }
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+  }
+  
+#btn1 {
+    margin-right: 5%;
+}
+#btn2 {
+    margin-left: 5%;
+}

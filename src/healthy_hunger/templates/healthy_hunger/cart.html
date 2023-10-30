@@ -23,9 +23,9 @@
             <td id="price_{{ prod.product.id }}" style="font-size:20;">{% widthratio prod.product.price 1 prod.quantity %}</td>
             <td style="width: 20%;">
                 <div class="quantity-control">
-                    <button class="btn btn-sm btn-secondary" onclick="incr_or_decr(this, -1, {{ prod.product.id }}, {{ prod.product.price }})">-</button>
+                    <button id="btn1" class="btn btn-sm btn-secondary" onclick="incr_or_decr(this, -1, {{ prod.product.id }}, {{ prod.product.price }})">-</button>
                     <p id="{{ prod.product.id }}" name="{{ prod.product.id }}">{{ prod.quantity }}</p>
-                    <button class="btn btn-sm btn-primary" onclick="incr_or_decr(this, 1, {{ prod.product.id }}, {{ prod.product.price }})">+</button>
+                    <button id="btn2" class="btn btn-sm btn-primary" onclick="incr_or_decr(this, 1, {{ prod.product.id }}, {{ prod.product.price }})">+</button>
                 </div>
             </td>
             <td>
