@@ -224,6 +224,11 @@ footer p {
     font-size: 20px;
     border: 0;
     height: 8%;
+    border-radius: 20px;
+}
+
+.nutrieng_order:hover {
+    background-color: rgb(204, 14, 14);
 }
 
 .about_container {
