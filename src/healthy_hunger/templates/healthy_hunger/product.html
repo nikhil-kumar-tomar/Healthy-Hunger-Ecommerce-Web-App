@@ -2,8 +2,17 @@
 {% load static %}
 {% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
 {% block link2 %} <link rel="stylesheet" href={% static "healthy_hunger/css/custom.css" %}> {% endblock link2 %}
+{% block script %}<script src="{% static 'healthy_hunger/js/custom.js' %}"></script>{% endblock script %}
 {% block title %} {{ product.name }} {% endblock %}
 {% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        {% if message.level == 25 %}
+        <script>success_popup("cart");</script> 
+        {% endif %}
+    {% endfor %}
+{% endif %}
 
 <div class="custom-container">
     <div class="row">

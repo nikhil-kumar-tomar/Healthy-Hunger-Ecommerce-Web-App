@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import stripe
+from django.contrib import messages
 
 stripe.api_key = settings.STRIPE_API_KEY
 
@@ -49,7 +50,7 @@ class ProductView(View):
         else:
             cart_list.quantity += 1
             cart_list.save()
-            
+        messages.success(request, "1")
         return HttpResponseRedirect(f"/product/{pk}")
     
 class AboutView(View):
@@ -183,4 +184,5 @@ class CartDeleteProduct(View):
 class SuccessOrder(View):
     def get(self, request):
         Cart.objects.filter(user=request.user).delete()
+        messages.success(request, "1")
         return HttpResponseRedirect('/')

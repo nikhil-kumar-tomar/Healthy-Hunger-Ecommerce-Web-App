@@ -27,3 +27,23 @@ function incr_or_decr(button, change, id, price) {
     }
     quant.innerText = quantity;
 }
+
+function success_popup(type) {
+    var pops = document.getElementById('popup');
+    pops.style.display = 'block';
+    if (type === "cart")
+    {
+        console.log(1);
+        pops.style.backgroundColor = 'rgb(255, 123, 0)';
+        pops.textContent = "Successfully added to the Cart";
+    }
+    else if (type === "order")
+    {
+        pops.style.backgroundColor = 'rgb(12, 177, 12)';
+        pops.textContent = "Order Placed Successfully";
+    }
+
+    setTimeout(() => {
+        pops.style.display = 'none';
+    }, 3000);
+}

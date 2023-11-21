@@ -344,3 +344,14 @@ background-color: aliceblue;
 #btn2 {
     margin-left: 5%;
 }
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 2%;
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+    z-index: 1000;
+}
